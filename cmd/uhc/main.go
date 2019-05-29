@@ -38,7 +38,7 @@ import (
 )
 
 var root = &cobra.Command{
-	Use:  "uhc",
+	Use:  "uhc-ari",
 	Long: "Command line tool for api.openshift.com.",
 }
 
