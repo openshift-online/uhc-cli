@@ -25,20 +25,20 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/completion"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/delete"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/get"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/login"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/logout"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/patch"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/post"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/token"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/version"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/cluster"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/completion"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/delete"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/get"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/login"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/logout"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/patch"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/post"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/token"
+	"github.com/ALimaRedHat/uhc/cmd/uhc/version"
 )
 
 var root = &cobra.Command{
-	Use:  "uhc-ari",
+	Use:  "uhc",
 	Long: "Command line tool for api.openshift.com.",
 }
 
