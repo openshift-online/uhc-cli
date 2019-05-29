@@ -20,9 +20,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/describe"
-	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/list"
-	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/status"
+	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/count"
+	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/describe"
+	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/list"
+	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/status"
 	"github.com/spf13/cobra"
 )
 
@@ -44,6 +45,7 @@ func init() {
 		false,
 		"Enable debug mode.",
 	)
+	Cmd.AddCommand(count.Cmd)
 	Cmd.AddCommand(list.Cmd)
 	Cmd.AddCommand(status.Cmd)
 	Cmd.AddCommand(describe.Cmd)

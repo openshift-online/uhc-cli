@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package list
+package count
 
 import (
 	"fmt"
@@ -37,7 +37,7 @@ var args struct {
 var managed bool
 
 var Cmd = &cobra.Command{
-	Use:   "count [flags] ",
+	Use:   "count",
 	Short: "Count number of clusters",
 	Long:  "Display number of clusters",
 	Run:   run,
@@ -132,7 +132,7 @@ func run(cmd *cobra.Command, argv []string) {
 		// Fetch the next page:
 		response := getResponse(collection, managed, args.parameter, pageSize, pageIndex)
 
-		// Add total count of each page:
+		// Add cluster count of each page:
     clusterCount += response.Total()
 
 		// If the number of fetched results is less than requested, then
@@ -142,7 +142,7 @@ func run(cmd *cobra.Command, argv []string) {
 		}
 		pageIndex++
 	}
-  fmt.Printf("Total Count: %s", clusterCount)
+  fmt.Printf("Cluster Count: %d\n", clusterCount)
 }
 
 func getResponse(collection *v1.ClustersClient,
