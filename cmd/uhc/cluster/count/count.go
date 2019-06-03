@@ -24,7 +24,7 @@ import (
 	"github.com/openshift-online/uhc-cli/pkg/config"
 	"github.com/openshift-online/uhc-cli/pkg/util"
 	"github.com/openshift-online/uhc-sdk-go/pkg/client"
-	"github.com/openshift-online/uhc-sdk-go/pkg/client/clustersmgmt/v1"
+	v1 "github.com/openshift-online/uhc-sdk-go/pkg/client/clustersmgmt/v1"
 	"github.com/spf13/cobra"
 )
 
@@ -72,7 +72,7 @@ func run(cmd *cobra.Command, argv []string) {
 
 	pageSize := 100
 	pageIndex := 1
-  clusterCount := 0
+	clusterCount := 0
 
 	// Load the configuration file:
 	cfg, err := config.Load()
@@ -133,7 +133,7 @@ func run(cmd *cobra.Command, argv []string) {
 		response := getResponse(collection, managed, args.parameter, pageSize, pageIndex)
 
 		// Add cluster count of each page:
-    clusterCount += response.Total()
+		clusterCount += response.Total()
 
 		// If the number of fetched results is less than requested, then
 		// this was the last page, otherwise process the next one:
@@ -142,7 +142,7 @@ func run(cmd *cobra.Command, argv []string) {
 		}
 		pageIndex++
 	}
-  fmt.Printf("Cluster Count: %d\n", clusterCount)
+	fmt.Printf("Cluster Count: %d\n", clusterCount)
 }
 
 func getResponse(collection *v1.ClustersClient,

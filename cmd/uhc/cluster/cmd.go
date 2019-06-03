@@ -20,10 +20,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/count"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/describe"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/list"
-	"github.com/ALimaRedHat/uhc-cli/cmd/uhc/cluster/status"
+	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/count"
+	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/describe"
+	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/list"
+	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/status"
 	"github.com/spf13/cobra"
 )
 
