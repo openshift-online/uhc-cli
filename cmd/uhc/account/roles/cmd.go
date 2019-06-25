@@ -118,6 +118,10 @@ func run(cmd *cobra.Command, argv []string) {
 		// Get role with provided id response:
 		roleResponse, err := connection.AccountsMgmt().V1().Roles().Role(argv[0]).Get().
 			Send()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Can't send request: %v\n", err)
+			os.Exit(1)
+		}
 		role := roleResponse.Body()
 
 		// Use role in new get request since original provides incomplete data.

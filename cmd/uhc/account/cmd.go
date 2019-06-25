@@ -21,6 +21,7 @@ import (
 	"os"
 
 	"github.com/openshift-online/uhc-cli/cmd/uhc/account/roles"
+	"github.com/openshift-online/uhc-cli/cmd/uhc/account/users"
 	"github.com/spf13/cobra"
 )
 
@@ -44,6 +45,7 @@ func init() {
 		"Enable debug mode.",
 	)
 	Cmd.AddCommand(roles.Cmd)
+	Cmd.AddCommand(users.Cmd)
 }
 
 func run(cmd *cobra.Command, argv []string) {
