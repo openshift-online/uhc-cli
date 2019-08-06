@@ -136,7 +136,7 @@ func run(cmd *cobra.Command, argv []string) {
 			if args.org == account.Organization().ID() {
 				username := stringPad(account.Username(), namePad)
 				userID := stringPad(account.ID(), namePad)
-				accountRoleList := getRolesFromUser(account, connection)
+				accountRoleList := GetRolesFromUser(account, connection)
 				fmt.Println(username, userID, printArray(accountRoleList))
 			}
 			return true
@@ -151,8 +151,8 @@ func run(cmd *cobra.Command, argv []string) {
 
 }
 
-// getRolesFromUser gets all roles a specific user possesses.
-func getRolesFromUser(account *amv1.Account, conn *client.Connection) []string {
+// GetRolesFromUser gets all roles a specific user possesses.
+func GetRolesFromUser(account *amv1.Account, conn *client.Connection) []string {
 
 	pageIndex := 1
 	var roles []string
