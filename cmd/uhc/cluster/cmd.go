@@ -17,10 +17,14 @@ limitations under the License.
 package cluster
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/describe"
 	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/list"
 	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/login"
 	"github.com/openshift-online/uhc-cli/cmd/uhc/cluster/status"
+	c "github.com/openshift-online/uhc-cli/pkg/command"
 	"github.com/spf13/cobra"
 )
 
@@ -36,4 +40,19 @@ func init() {
 	Cmd.AddCommand(status.Cmd)
 	Cmd.AddCommand(describe.Cmd)
 	Cmd.AddCommand(login.Cmd)
+}
+
+func run(cmd *cobra.Command, argv []string) {
+	// Check there is at least one argument
+	if len(argv) < 1 {
+		fmt.Fprintf(os.Stderr, "Expected at least one argument\n")
+		os.Exit(1)
+	}
+
+	// Check argument is a valid command
+	commandsSlice := cmd.Commands()
+	if !c.StringInArray(argv[0], c.GetCommandNames(commandsSlice)) {
+		fmt.Fprintf(os.Stderr, "INVALID COMMAND\n%s", cmd.UsageString())
+		os.Exit(1)
+	}
 }
