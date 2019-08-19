@@ -17,6 +17,9 @@ limitations under the License.
 package account
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/spf13/cobra"
 
 	"github.com/openshift-online/uhc-cli/cmd/uhc/account/orgs"
@@ -24,6 +27,7 @@ import (
 	"github.com/openshift-online/uhc-cli/cmd/uhc/account/roles"
 	"github.com/openshift-online/uhc-cli/cmd/uhc/account/status"
 	"github.com/openshift-online/uhc-cli/cmd/uhc/account/users"
+	c "github.com/openshift-online/uhc-cli/pkg/command"
 )
 
 // Cmd ...
@@ -40,4 +44,19 @@ func init() {
 	Cmd.AddCommand(status.Cmd)
 	Cmd.AddCommand(roles.Cmd)
 	Cmd.AddCommand(users.Cmd)
+}
+
+func run(cmd *cobra.Command, argv []string) {
+	// Check there is at least one argument
+	if len(argv) < 1 {
+		fmt.Fprintf(os.Stderr, "Expected at least one argument\n")
+		os.Exit(1)
+	}
+
+	// Check argument is a valid command
+	commandsSlice := cmd.Commands()
+	if !c.StringInArray(argv[0], c.GetCommandNames(commandsSlice)) {
+		fmt.Fprintf(os.Stderr, "INVALID COMMAND\n%s", cmd.UsageString())
+		os.Exit(1)
+	}
 }
